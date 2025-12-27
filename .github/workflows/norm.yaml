@@ -1,0 +1,14 @@
+# .github/workflows/norm.yaml
+name: norm
+on: [push, pull_request]
+
+jobs:
+
+  job-norm:
+    runs-on: ubuntu-latest
+    name: Norm v3.3.50
+    steps:
+    - uses: actions/checkout@v4
+    - uses: alexandregv/norminette-action@v3.3.50
+      with:
+        flags: '.'

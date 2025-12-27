@@ -1,0 +1,15 @@
+{
+	"C_Cpp.errorSquiggles": "enabled",
+	"C_Cpp.intelliSenseEngine": "default",
+	"C_Cpp.loggingLevel": "Information",
+	"C_Cpp.default.cStandard": "c11",
+	"C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"files.associations": {
+		"*.h": "c",
+		"*.c": "c",
+		"compare": "c",
+		"type_traits": "c"
+	}
+}
