@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/02 15:40:11 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 17:33:03 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/13 16:05:15 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-typedef struct s_vars
+/*
+RETURN
+	a pointer to a new string
+	which is a duplicate of the string s.
+
+	Memory for the new string is obtained with malloc(3), and
+	can be freed with free(3).
+*/
+
+char	*ft_strdup(const char *s)
 {
-	void	*mlx;
-	void	*win;
-}	t_vars;
+	size_t	size;
+	char	*d;
 
-int	handle_close(int keycode, t_vars *vars)
-{
-	(void)keycode;
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
-}
-
-int	main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, handle_close, &vars);
-	
-	mlx_loop(vars.mlx);
+	size = ft_strlen(s) + 1;
+	d = (char *)malloc(sizeof(char) * size);
+	if (d == NULL)
+		return (NULL);
+	ft_strlcpy(d, s, size);
+	return (d);
 }

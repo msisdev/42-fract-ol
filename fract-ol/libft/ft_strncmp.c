@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/02 15:40:11 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 17:33:08 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/28 14:59:19 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-typedef struct s_vars
+/*
+	The comparison is done using unsigned characters.
+*/
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	void	*mlx;
-	void	*win;
-}	t_vars;
+	unsigned char	c1;
+	unsigned char	c2;
+	size_t			i;
 
-int	handle_close(int keycode, t_vars *vars)
-{
-	(void)keycode;
-	mlx_destroy_window(vars->mlx, vars->win);
+	i = 0;
+	while (i < n)
+	{
+		c1 = s1[i];
+		c2 = s2[i];
+		if (c1 != c2 || c1 == '\0')
+			return (c1 - c2);
+		i++;
+	}
 	return (0);
-}
-
-int	main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, handle_close, &vars);
-	
-	mlx_loop(vars.mlx);
 }

@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/02 15:40:11 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 16:30:41 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/14 14:38:53 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-typedef struct s_vars
+/*
+	checks whether c is a 7-bit unsigned char value that fits into the
+	ASCII character set.
+*/
+
+int	ft_isascii(int c)
 {
-	void	*mlx;
-	void	*win;
-}	t_vars;
-
-int	handle_close(int keycode, t_vars *vars)
-{
-	(void)keycode;
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
-}
-
-int	main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, handle_close, &vars);
-	
-	mlx_loop(vars.mlx);
+	return (0 <= c && c <= 127);
 }

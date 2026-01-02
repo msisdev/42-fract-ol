@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf_write_d.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/02 15:40:11 by minseobk         ###   ########.fr       */
+/*   Created: 2025/11/06 17:08:07 by minseobk          #+#    #+#             */
+/*   Updated: 2025/11/06 17:36:17 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "ft_printf.h"
 
-typedef struct s_vars
+ssize_t	_ft_printf_write_d(int v)
 {
-	void	*mlx;
-	void	*win;
-}	t_vars;
+	char	*buf;
+	size_t	ret;
 
-int	handle_close(int keycode, t_vars *vars)
-{
-	(void)keycode;
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
+	buf = ft_itoa(v);
+	ret = write(STDOUT_FILENO, buf, ft_strlen(buf));
+	free(buf);
+	return (ret);
 }
 
-int	main(void)
+ssize_t	_ft_printf_write_i(int v)
 {
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, handle_close, &vars);
-	
-	mlx_loop(vars.mlx);
+	return (_ft_printf_write_d(v));
 }

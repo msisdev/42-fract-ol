@@ -25,7 +25,7 @@ LIBMLX			:= $(LIBMLX_DIR)/libmlx.a
 
 CC				:= cc
 CFLAGS			:= -Wall -Wextra -Werror
-CFLAGS			+= -I$(INC_DIR)
+CFLAGS			+= -I$(INC_DIR) -I$(LIBFT_DIR)
 CFLAGS			+= $(DBG)	# make DBG="-g"
 # MLXFLAGS		:= -Lmlx -lmlx -L/usr/lib -Imlx -lX11 -lXext -lm
 MLXOBJFLAGS		:= -I/usr/include -I$(LIBMLX_DIR) -O3

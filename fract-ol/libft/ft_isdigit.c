@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/27 19:44:20 by minseobk          #+#    #+#             */
-/*   Updated: 2025/12/27 20:14:49 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 16:14:04 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/14 14:39:25 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-# include <unistd.h>
+#include "libft.h"
 
-#endif // LIBFT_Hi
+int	ft_isdigit(int c)
+{
+	return ('0' <= c && c <= '9');
+}

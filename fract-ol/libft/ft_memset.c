@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/02 15:40:11 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 17:33:01 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/16 13:53:57 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-typedef struct s_vars
+/*
+The memset() function fills the first n bytes of the memory area pointed to by
+	s with the constant byte c.
+
+The memset() function returns a pointer to the memory area s.
+*/
+
+void	*ft_memset(void *s, int c, size_t n)
 {
-	void	*mlx;
-	void	*win;
-}	t_vars;
+	unsigned char	*p;
+	unsigned char	v;
+	size_t			i;
 
-int	handle_close(int keycode, t_vars *vars)
-{
-	(void)keycode;
-	mlx_destroy_window(vars->mlx, vars->win);
-	return (0);
-}
-
-int	main(void)
-{
-	t_vars	vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, handle_close, &vars);
-	
-	mlx_loop(vars.mlx);
+	p = (unsigned char *)s;
+	v = (unsigned char)c;
+	i = 0;
+	while (i < n)
+	{
+		p[i] = v;
+		i++;
+	}
+	return (s);
 }
