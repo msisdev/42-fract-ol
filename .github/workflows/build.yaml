@@ -3,13 +3,13 @@ name: build
 on: [push, pull_request]
 
 jobs:
-  job-build-ex00:
+  job-build-fract-ol:
     runs-on: ubuntu-latest
-    name: Build ex00
+    name: Build fract-ol
     steps:
     - name: Checkout
       uses: actions/checkout@v4
     
-    - name: make ex00
-      working-directory: ./ex00
+    - name: make fract-ol
+      working-directory: ./fract-ol
       run: make re

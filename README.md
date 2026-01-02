@@ -35,7 +35,7 @@ Press the `Use this template` button above. As a result, you will a create anoth
 
 ## Get Started
 ```
-ex00
+fract-ol
 ├── Makefile
 ├── app
 │   └── main.c

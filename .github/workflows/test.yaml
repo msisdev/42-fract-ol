@@ -3,19 +3,19 @@ name: test
 on: [push, pull_request]
 
 jobs:
-  job-test-ex00:
+  job-test-fract-ol:
     runs-on: ubuntu-latest
-    name: Test ex00
+    name: Test fract-ol
     steps:
     - name: Checkout
       uses: actions/checkout@v4
     
-    - name: make ex00
-      working-directory: ./ex00
+    - name: make fract-ol
+      working-directory: ./fract-ol
       run: make fclean && make test
 
     - name: make test
-      working-directory: ./ex00
+      working-directory: ./fract-ol
       # run: ls bin *_test* | xargs -L 1 -d '\n'
       run: |
         BIN_DIR="./bin"
