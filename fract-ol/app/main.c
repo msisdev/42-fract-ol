@@ -6,16 +6,16 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/04 15:40:01 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/04 19:25:45 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int	handle_close(int keycode, t_vars *v)
+int	handle_close(int keycode, t_context *c)
 {
 	(void)keycode;
-	mlx_destroy_window(v->mlx, v->win);
+	mlx_destroy_window(c->mlx, c->win);
 	exit(0);
 	return (0);
 }

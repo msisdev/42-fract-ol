@@ -31,7 +31,6 @@ CFLAGS			+= $(DBG)	# make DBG="-g"
 MLXOBJFLAGS		:= -I/usr/include -I$(LIBMLX_DIR) -O3
 MLXLINKFLAGS	:= -L$(LIBMLX_DIR) -lmlx -L/usr/lib -I$(LIBMLX_DIR) -lXext -lX11 -lm -lz
 
-
 SRC_DIR			:= src
 SRC_CODES		:= $(shell find $(SRC_DIR) -name '*.c')
 SRC_OBJS		:= $(SRC_CODES:.c=.o)

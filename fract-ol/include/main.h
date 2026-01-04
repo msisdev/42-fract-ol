@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/04 15:29:58 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/04 19:26:42 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@
 typedef int		t_color;
 typedef char	*t_addr;
 
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-}	t_vars;
-
 typedef struct s_display
 {
 	void	*img;
@@ -40,7 +35,8 @@ typedef struct s_display
 
 typedef struct s_context
 {
-	t_vars		v;
+	void		*mlx;
+	void		*win;
 	t_display	d;
 }	t_context;
 
