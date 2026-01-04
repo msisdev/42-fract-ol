@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_key.h                                          :+:      :+:    :+:   */
+/*   mlx_types.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 14:15:31 by sgwon             #+#    #+#             */
-/*   Updated: 2026/01/02 15:30:29 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:09:24 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLX_KEY_H
-# define MLX_KEY_H
+#ifndef MLX_TYPES_H
+# define MLX_TYPES_H
 
 typedef enum e_key
 {
@@ -113,4 +113,4 @@ typedef enum e_mask
 	MASK_POINTER_MOTION = (1L << 6),
 }	t_mask;
 
-#endif // MLX_KEY_H
+#endif // MLX_TYPES_H

@@ -6,32 +6,29 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/02 15:40:11 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/04 15:40:01 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-}	t_vars;
-
-int	handle_close(int keycode, t_vars *vars)
+int	handle_close(int keycode, t_vars *v)
 {
 	(void)keycode;
-	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_window(v->mlx, v->win);
+	exit(0);
 	return (0);
 }
 
 int	main(void)
 {
-	t_vars	vars;
+	const t_point	center = {.x = WINDOW_W / 2, .y = WINDOW_H / 2};
+	t_context		c;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	mlx_hook(vars.win, 2, 1L << 0, handle_close, &vars);
-	
-	mlx_loop(vars.mlx);
+	ctx_init(&c);
+	draw_circle(&c.d, center, 200, PALETTE_MAGENTA);
+	ctx_display(&c);
+	ctx_hook(&c, EVENT_KEY_PRESS, MASK_KEY_PRESS, handle_close);
+	ctx_loop(&c);
+	return (0);
 }

@@ -55,14 +55,13 @@ all: app
 
 .PHONY: clean
 clean:
-	make -C $(LIBFT_DIR) clean
-	make -C $(LIBMLX_DIR) clean
+	@make -C $(LIBFT_DIR) clean
+	@make -C $(LIBMLX_DIR) clean
 	find . -name "*.o" -delete
 
 .PHONY: fclean
 fclean: clean
-	make -C $(LIBFT_DIR) fclean
-	make -C $(LIBMLX_DIR) fclean
+	@make -C $(LIBFT_DIR) fclean
 	rm -f $(APP)
 	rm -f $(BIN_DIR)/*
 
