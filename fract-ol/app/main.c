@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/05 15:20:46 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:58:02 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ static int	handle_loop(t_context *c)
 	int	t;
 
 	t = c->s.frame + 1;
-	if (t == 60)
+	if (t == 1000000)
 		t = 0;
-	if (t % 10 == 0)
-		printf("frame: %2d\n", t);
+	if (t % 100000 == 0)
+		printf("frame: %d\n", t);
 	c->s.frame = t;
 	return (0);
 }
 
 int	main(void)
 {
-	const t_point	center = {.x = WINDOW_W / 2, .y = WINDOW_H / 2};
+	const t_pixel	center = {.x = WIN_W / 2, .y = WIN_H / 2};
 	t_context		c;
 
 	ctx_init(&c);

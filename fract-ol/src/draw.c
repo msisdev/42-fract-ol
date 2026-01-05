@@ -6,34 +6,32 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:43:16 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/05 15:20:46 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/05 16:04:11 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-t_point	add_point(t_point a, t_point b)
+t_pixel	add_pixel(t_pixel a, t_pixel b)
 {
-	t_point	c;
-
-	c.x = a.x + b.x;
-	c.y = a.y + b.y;
-	return (c);
+	a.x += b.x;
+	a.y += b.y;
+	return (a);
 }
 
-void	draw_point(t_display *d, t_point p, t_color c)
+void	draw_pixel(t_display *d, t_pixel p, t_color c)
 {
 	t_addr	dst;
 
-	if (p.x < 0 || WINDOW_W <= p.x || p.y < 0 || WINDOW_H <= p.y)
+	if (p.x < 0 || WIN_W <= p.x || p.y < 0 || WIN_H <= p.y)
 		return ;
 	dst = d->addr + p.y * d->_ll + (p.x * d->_bpp / 8);
-	*(unsigned int *)dst = c;
+	*(t_color *)dst = c;
 }
 
-void	draw_circle(t_display *d, t_point p, int r, t_color c)
+void	draw_circle(t_display *d, t_pixel p, int r, t_color c)
 {
-	t_point	i;
+	t_pixel	i;
 
 	i.x = -r;
 	while (i.x <= r)
@@ -42,7 +40,7 @@ void	draw_circle(t_display *d, t_point p, int r, t_color c)
 		while (i.y <= r)
 		{
 			if (i.x * i.x + i.y * i.y <= r * r)
-				draw_point(d, add_point(p, i), c);
+				draw_pixel(d, add_pixel(p, i), c);
 			i.y++;
 		}
 		i.x++;
