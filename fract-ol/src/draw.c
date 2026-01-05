@@ -6,22 +6,22 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:43:16 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/05 14:23:51 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:20:46 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-t_point2d	add_point(t_point2d a, t_point2d b)
+t_point	add_point(t_point a, t_point b)
 {
-	t_point2d	c;
+	t_point	c;
 
 	c.x = a.x + b.x;
 	c.y = a.y + b.y;
 	return (c);
 }
 
-void	draw_point(t_display *d, t_point2d p, t_color c)
+void	draw_point(t_display *d, t_point p, t_color c)
 {
 	t_addr	dst;
 
@@ -31,9 +31,9 @@ void	draw_point(t_display *d, t_point2d p, t_color c)
 	*(unsigned int *)dst = c;
 }
 
-void	draw_circle(t_display *d, t_point2d p, int r, t_color c)
+void	draw_circle(t_display *d, t_point p, int r, t_color c)
 {
-	t_point2d	i;
+	t_point	i;
 
 	i.x = -r;
 	while (i.x <= r)

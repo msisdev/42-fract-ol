@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/05 14:24:10 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/05 15:20:46 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_point2d
 {
 	int	x;
 	int	y;
-}	t_point2d;
+}	t_point;
 
 typedef enum e_palette
 {
@@ -75,9 +75,9 @@ void		ctx_loop(const t_context *c);
 void		dis_init(void *mlx_ptr, t_display *d);
 
 /* draw.c */
-t_point2d	add_point(t_point2d a, t_point2d b);
-void		draw_point(t_display *d, t_point2d p, t_color c);
-void		draw_circle(t_display *d, t_point2d p, int r, t_color c);
+t_point	add_point(t_point a, t_point b);
+void		draw_point(t_display *d, t_point p, t_color c);
+void		draw_circle(t_display *d, t_point p, int r, t_color c);
 
 /* state */
 void		state_init(t_state *s);
