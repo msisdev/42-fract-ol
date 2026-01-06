@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:27:54 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/05 16:07:21 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:40:20 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,26 @@ typedef struct s_point
 	long double	x;
 	long double	y;
 }	t_point;
+
+/**
+ *	FIELDS
+ *
+ *		- `z`: initial value of z
+ *		- `c`: initial value of c
+ * 		- `i`: last iteration count
+ * 		- `q`: square value of the last sequence number
+ */
+typedef struct s_fract
+{
+	t_point			z;
+	t_point			c;
+	unsigned int	i;
+	long double		q;
+}	t_fract;
+
+typedef enum e_coloring
+{
+	COLORING_BLACK_WHITE,
+}	t_coloring;
 
 #endif // TYPES_H

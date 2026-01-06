@@ -12,3 +12,28 @@ Mandelbrot set
 Julia set
 - `z = Point of Interest`
 - `c = Constant`
+
+## Graphics
+```py
+draw_fract_pixel: pixel a
+	max_iter;
+	p = pixel_to_point(a)
+	f = fract_sequence(p, max_iter)
+	c = colorize(f)
+	draw_pixel(a, c)
+
+draw_fract:
+	for each a in window
+		draw_fract_pixel(a)
+
+draw_fract_step:
+	step;
+	max_step;
+	step_w;
+	step_h;
+	pixel_count;
+	max_pixel_count;
+	o = {.x = step / step_w, .y = step % step_w}
+	for each a in grid(o)
+		draw_fract_pixel(a)
+```
