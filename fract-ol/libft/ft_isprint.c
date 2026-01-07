@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 19:39:10 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/07 18:15:53 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 17:32:52 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/14 14:39:45 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-static long double	calc_init_scale(void)
+/*
+	checks for any printable character including space.
+*/
+
+int	ft_isprint(int c)
 {
-	long double	px_len;
-
-	if (WINDOW_W > WINDOW_H)
-		px_len = WINDOW_H;
-	else
-		px_len = WINDOW_W;
-	return (STATE_INIT_WORLD_LEN / px_len);
-}
-
-void	state_init(t_state *s)
-{
-	s->center.x = 0;
-	s->center.y = 0;
-	s->scale = calc_init_scale();
-	s->px = 0;
-	s->px_max = WINDOW_W * WINDOW_H;
+	return (' ' <= c && c <= '~');
 }

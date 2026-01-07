@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   handle.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 19:39:10 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/07 18:15:53 by minseobk         ###   ########.fr       */
+/*   Created: 2026/01/07 19:34:24 by minseobk          #+#    #+#             */
+/*   Updated: 2026/01/07 20:09:24 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static long double	calc_init_scale(void)
+int	handle_loop_routine(t_context *c)
 {
-	long double	px_len;
-
-	if (WINDOW_W > WINDOW_H)
-		px_len = WINDOW_H;
-	else
-		px_len = WINDOW_W;
-	return (STATE_INIT_WORLD_LEN / px_len);
-}
-
-void	state_init(t_state *s)
-{
-	s->center.x = 0;
-	s->center.y = 0;
-	s->scale = calc_init_scale();
-	s->px = 0;
-	s->px_max = WINDOW_W * WINDOW_H;
+	draw_fract(&c->d, &c->i, &c->s);
+	ctx_display(c);
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:26:46 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 14:02:18 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:08:50 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
+t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
 {
 	t_fract	f;
 	t_point	t;
@@ -22,12 +22,12 @@ static t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
 	f.i = 0;
 	while (f.i < max_iter)
 	{
-		t.x = z.x * z.x;
-		t.y = z.y * z.y;
+		t.x = f.z.x * f.z.x;
+		t.y = f.z.y * f.z.y;
 		if (t.x + t.y > 4.0)
 			break ;
-		f.z.x = t.x - t.y + c.x;
-		f.z.y = 2 * z.x * z.y + c.y;
+		f.z.y = 2 * f.z.x * f.z.y + f.c.y;
+		f.z.x = t.x - t.y + f.c.x;
 		f.i++;
 	}
 	return (f);
@@ -39,7 +39,7 @@ static t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
  *		Returns the iteration count (escape speed).
  *		Points in the set return max_iter.
  */
-t_fract	mandel_calc(t_point c, unsigned int max_iter)
+t_fract	fract_mandel(t_point c, unsigned int max_iter)
 {
 	t_point	z;
 
@@ -48,7 +48,7 @@ t_fract	mandel_calc(t_point c, unsigned int max_iter)
 	return (fract_calc(z, c, max_iter));
 }
 
-t_fract	julia_calc(t_point z, t_point c, unsigned int max_iter)
+t_fract	fract_julia(t_point z, t_point c, unsigned int max_iter)
 {
 	return (fract_calc(z, c, max_iter));
 }

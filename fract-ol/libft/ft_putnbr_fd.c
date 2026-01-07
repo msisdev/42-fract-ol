@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 19:39:10 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/07 18:15:53 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/05 16:14:44 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/08 16:15:36 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-static long double	calc_init_scale(void)
+static void	putnbr_rec(int n, int fd)
 {
-	long double	px_len;
-
-	if (WINDOW_W > WINDOW_H)
-		px_len = WINDOW_H;
-	else
-		px_len = WINDOW_W;
-	return (STATE_INIT_WORLD_LEN / px_len);
+	if (n < 10)
+	{
+		ft_putchar_fd(n + '0', fd);
+		return ;
+	}
+	putnbr_rec(n / 10, fd);
+	ft_putchar_fd(n % 10 + '0', fd);
 }
 
-void	state_init(t_state *s)
+void	ft_putnbr_fd(int n, int fd)
 {
-	s->center.x = 0;
-	s->center.y = 0;
-	s->scale = calc_init_scale();
-	s->px = 0;
-	s->px_max = WINDOW_W * WINDOW_H;
+	if (n == INT_MIN)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	putnbr_rec(n, fd);
 }

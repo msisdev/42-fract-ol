@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 16:41:06 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/07 20:19:07 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,27 @@
 
 static int	handle_key_press(int keycode, t_context *c)
 {
-	(void)keycode;
+	if (keycode == KEY_Q)
+		mlx_destroy_window(c->mlx, c->win);
+	return (0);
+}
+
+static int	handle_destroy(t_context *c)
+{
 	mlx_destroy_window(c->mlx, c->win);
 	exit(0);
 	return (0);
 }
 
-static int	handle_loop(t_context *c)
-{
-	(void)c;
-	return (0);
-}
-
 int	main(void)
 {
-	const t_pixel	center = {.x = WINDOW_W / 2, .y = WINDOW_H / 2};
 	t_context		c;
 
 	ctx_init(&c);
-	draw_circle(&c.d, center, 200, PALETTE_MAGENTA);
 	ctx_display(&c);
 	ctx_hook_event(&c, EVENT_KEY_PRESS, MASK_KEY_PRESS, handle_key_press);
-	ctx_hook_loop(&c, handle_loop);
+	ctx_hook_event(&c, EVENT_DESTROY_NOTIFY, 0, handle_destroy);
+	ctx_hook_loop(&c, handle_loop_routine);
 	ctx_loop(&c);
 	return (0);
 }

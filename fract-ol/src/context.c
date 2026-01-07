@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:36:29 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 16:41:19 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/07 19:33:11 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ctx_init(t_context *c)
 	if (!c->win)
 		exit(1);
 	dis_init(c->mlx, &c->d);
+	input_init(&c->i);
 	state_init(&c->s);
 }
 

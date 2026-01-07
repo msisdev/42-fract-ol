@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   ft_printf_write_pc.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 19:39:10 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/07 18:15:53 by minseobk         ###   ########.fr       */
+/*   Created: 2025/11/06 17:51:46 by minseobk          #+#    #+#             */
+/*   Updated: 2025/11/06 17:52:48 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "ft_printf.h"
 
-static long double	calc_init_scale(void)
+ssize_t	_ft_printf_write_pc(void)
 {
-	long double	px_len;
+	char	v;
 
-	if (WINDOW_W > WINDOW_H)
-		px_len = WINDOW_H;
-	else
-		px_len = WINDOW_W;
-	return (STATE_INIT_WORLD_LEN / px_len);
-}
-
-void	state_init(t_state *s)
-{
-	s->center.x = 0;
-	s->center.y = 0;
-	s->scale = calc_init_scale();
-	s->px = 0;
-	s->px_max = WINDOW_W * WINDOW_H;
+	v = '%';
+	return (write(STDOUT_FILENO, &v, 1));
 }

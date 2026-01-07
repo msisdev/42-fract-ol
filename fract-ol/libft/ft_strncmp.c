@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   state.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/04 19:39:10 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/07 18:15:53 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 17:33:08 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/28 14:59:19 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-static long double	calc_init_scale(void)
+/*
+	The comparison is done using unsigned characters.
+*/
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	long double	px_len;
+	unsigned char	c1;
+	unsigned char	c2;
+	size_t			i;
 
-	if (WINDOW_W > WINDOW_H)
-		px_len = WINDOW_H;
-	else
-		px_len = WINDOW_W;
-	return (STATE_INIT_WORLD_LEN / px_len);
-}
-
-void	state_init(t_state *s)
-{
-	s->center.x = 0;
-	s->center.y = 0;
-	s->scale = calc_init_scale();
-	s->px = 0;
-	s->px_max = WINDOW_W * WINDOW_H;
+	i = 0;
+	while (i < n)
+	{
+		c1 = s1[i];
+		c2 = s2[i];
+		if (c1 != c2 || c1 == '\0')
+			return (c1 - c2);
+		i++;
+	}
+	return (0);
 }

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unproject.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 15:10:10 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 16:47:49 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 16:14:04 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/14 14:39:25 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-t_point	gl_pixel_to_point(t_state s, t_pixel a)
+int	ft_isdigit(int c)
 {
-	t_point	p;
-
-	p.x = a.x * s.s;
-	p.y = a.y * s.s;
-	return (p);
+	return ('0' <= c && c <= '9');
 }

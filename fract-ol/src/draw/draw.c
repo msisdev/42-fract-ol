@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:43:16 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 16:41:28 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/06 17:24:47 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ t_pixel	add_pixel(t_pixel a, t_pixel b)
 	return (a);
 }
 
-void	draw_pixel(t_display *d, t_pixel p, t_color c)
+void	draw_pixel(t_display *d, t_pixel a, t_color c)
 {
 	t_addr	dst;
 
-	if (p.x < 0 || WINDOW_W <= p.x || p.y < 0 || WINDOW_H <= p.y)
+	if (a.x < 0 || WINDOW_W <= a.x || a.y < 0 || WINDOW_H <= a.y)
 		return ;
-	dst = d->addr + p.y * d->_ll + (p.x * d->_bpp / 8);
+	dst = d->addr + a.y * d->_ll + (a.x * d->_bpp / 8);
 	*(t_color *)dst = c;
 }
 
-void	draw_circle(t_display *d, t_pixel p, int r, t_color c)
+void	draw_circle(t_display *d, t_pixel a, int r, t_color c)
 {
 	t_pixel	i;
 
@@ -40,9 +40,10 @@ void	draw_circle(t_display *d, t_pixel p, int r, t_color c)
 		while (i.y <= r)
 		{
 			if (i.x * i.x + i.y * i.y <= r * r)
-				draw_pixel(d, add_pixel(p, i), c);
+				draw_pixel(d, add_pixel(a, i), c);
 			i.y++;
 		}
 		i.x++;
 	}
 }
+

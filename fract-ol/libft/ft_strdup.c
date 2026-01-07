@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coloring.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 19:37:11 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 15:06:50 by minseobk         ###   ########.fr       */
+/*   Created: 2025/10/01 17:33:03 by minseobk          #+#    #+#             */
+/*   Updated: 2025/10/13 16:05:15 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-t_color	color_black_white(t_fract f)
-{
-	if (f.i % 2 == 0)
-		return (PALETTE_BLACK);
-	return (PALETTE_WHITE);
-}
+/*
+RETURN
+	a pointer to a new string
+	which is a duplicate of the string s.
 
-t_color	color_get(t_fract f, t_coloring c)
+	Memory for the new string is obtained with malloc(3), and
+	can be freed with free(3).
+*/
+
+char	*ft_strdup(const char *s)
 {
-	if (c == COLORING_BLACK_WHITE)
-		return (color_black_white(f));
-	return (color_black_white(f));
+	size_t	size;
+	char	*d;
+
+	size = ft_strlen(s) + 1;
+	d = (char *)malloc(sizeof(char) * size);
+	if (d == NULL)
+		return (NULL);
+	ft_strlcpy(d, s, size);
+	return (d);
 }
