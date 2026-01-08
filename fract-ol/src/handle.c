@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 19:34:24 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/08 19:10:48 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/08 19:13:20 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	handle_destroy(t_context *c)
 	mlx_destroy_window(c->mlx, c->win);
 	mlx_destroy_image(c->mlx, c->d.img);
 	mlx_destroy_display(c->mlx);
+	free(c->mlx);
+	exit(0);
 	return (0);
 }
 
