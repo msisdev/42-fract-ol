@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:24:47 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/07 20:16:08 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/08 18:50:50 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 void	draw_fract_pixel(t_display *d, t_input *i, t_state *s, t_pixel a)
 {
-	t_pixel	t;
 	t_point	p;
 	t_fract	f;
 	t_color	c;
 
-	t.x = a.x - WINDOW_W / 2;
-	t.y = a.y - WINDOW_H / 2;
-	p = gl_pixel_to_point(t, s->scale);
+	p = gl_pixel_to_point(a, s->center, s->scale);
 	if (i->fmode == FRACT_MODE_MANDEL)
 		f = fract_mandel(p, FRACT_MAX_ITER);
 	else
@@ -38,7 +35,7 @@ void	draw_fract_step(t_display *d, t_input *i, t_state *s)
 	step = 0;
 	a.x = s->px % WINDOW_W;
 	a.y = s->px / WINDOW_W;
-	while (step < STATE_STEP_SIZE && s->px < s->px_max)
+	while (step < STATE_PX_STEP_SIZE && s->px < s->px_max)
 	{
 		if (a.x + 1 < WINDOW_W)
 			a.x += 1;

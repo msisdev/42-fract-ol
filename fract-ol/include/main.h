@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/07 20:17:14 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/08 19:10:23 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 # define WINDOW_H 900
 # define WINDOW_T "fractol"
 # define STATE_INIT_WORLD_LEN 4.0
-# define STATE_STEP_SIZE 100
+# define STATE_PX_STEP_SIZE 1000000
+# define STATE_SCALE_STEP 1.1
+# define STATE_MOVE_STEP 100
 # define FRACT_MAX_ITER 100
 
 /**
@@ -83,6 +85,7 @@ t_color		color_black_white(t_fract f);
 /* context */
 void		ctx_init(t_context *c);
 void		ctx_display(const t_context *c);
+t_pixel		ctx_get_mouse_pos(const t_context *c);
 void		ctx_hook_event(const t_context *c, t_event e, t_mask m, int (*f)());
 void		ctx_hook_loop(const t_context *c, int (*f)());
 void		ctx_loop(const t_context *c);
@@ -104,15 +107,19 @@ t_fract		fract_julia(t_point z, t_point c, unsigned int max_iter);
 bool		fract_is_in_set(unsigned int last_iter, unsigned int max_iter);
 
 /* graphic */
-t_point		gl_pixel_to_point(t_pixel a, long double scale);
+t_point		gl_pixel_to_point(t_pixel a, t_point center, long double scale);
 
 /* handle */
 int			handle_loop_routine(t_context *c);
+int			handle_destroy(t_context *c);
+int			handle_key_press(int keycode, t_context *c);
+int			handle_button_press(int code, int x, int y, t_context *c);
 
 /* input */
 void		input_init(t_input *i);
 
 /* state */
 void		state_init(t_state *s);
+void		state_refresh(t_state *s);
 
 #endif // MAIN_H
