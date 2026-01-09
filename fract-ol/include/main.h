@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/08 19:10:23 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/09 13:51:30 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define STATE_SCALE_STEP 1.1
 # define STATE_MOVE_STEP 100
 # define FRACT_MAX_ITER 100
+# define FRACT_MULTIPLIER 10000
 
 /**
  *	FIELDS
