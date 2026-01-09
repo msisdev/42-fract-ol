@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 15:34:39 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/09 20:25:17 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ARG_OPT_JULIA_R_NAME "-jr"
 # define ARG_OPT_JULIA_I_NAME "-ji"
 # define FRACT_MAX_ITER 100
+# define FRACT_ESCAPE_THRESHOLD_SQ 4.0
 # define STATE_INIT_WORLD_LEN 4.0
 # define STATE_PX_STEP_SIZE 1000000
 # define STATE_SCALE_STEP 1.1
@@ -83,8 +84,8 @@ typedef struct s_context
 	t_state		s;
 }	t_context;
 
-/* colorize */
-t_color			colorize(t_fract f, t_color_mode m);
+/* color */
+t_color			color(t_fract f, t_color_mode m);
 t_color			color_black_white(t_fract f);
 
 /* context */

@@ -24,7 +24,7 @@ draw_fract_pixel: pixel a
 	max_iter;
 	p = pixel_to_point(a)
 	f = fract_sequence(p, max_iter)
-	c = colorize(f)
+	c = color(f)
 	draw_pixel(a, c)
 
 draw_fract:
@@ -42,3 +42,16 @@ draw_fract_step:
 	for each a in grid(o)
 		draw_fract_pixel(a)
 ```
+
+## Color
+- `M`: max iter
+- `T`: threshold, which is 2
+- `m`, `d(i, j)`: the least iter index `m` that `m < M`, `|z_m| > T`
+
+### function
+> A function `t = f(m)` that maps
+> `[m1, m2]` to `[0, 1]`
+
+- `s = (m - m1) / (m2 - m1)`, which is `0 <= s <= 1`
+- `t = s^q` so `0 <= t <= 1`
+- or `t = (1 - s)^q`

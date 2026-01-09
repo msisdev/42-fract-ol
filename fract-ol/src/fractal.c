@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:26:46 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 13:54:32 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/09 19:39:29 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
 	{
 		t.x = f.z.x * f.z.x;
 		t.y = f.z.y * f.z.y;
-		if (t.x + t.y > 4.0)
+		if (t.x + t.y > FRACT_ESCAPE_THRESHOLD_SQ)
 			break ;
 		f.z.y = 2 * f.z.x * f.z.y + f.c.y;
 		f.z.x = t.x - t.y + f.c.x;

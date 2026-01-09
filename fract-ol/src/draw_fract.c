@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:24:47 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/08 18:50:50 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/09 20:25:46 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_fract_pixel(t_display *d, t_input *i, t_state *s, t_pixel a)
 		f = fract_mandel(p, FRACT_MAX_ITER);
 	else
 		f = fract_julia(p, i->julia_c, FRACT_MAX_ITER);
-	c = colorize(f, i->cmode);
+	c = color(f, i->cmode);
 	draw_pixel(d, a, c);
 }
 
