@@ -6,18 +6,26 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/08 18:17:34 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:35:20 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
-#include <stdio.h>
 
-int	main(void)
+/**
+ *	USAGE
+ *
+ *		./fractol [-m (m|j)] [-jr <float num>] [-ji <float num>] [-c]
+ *
+ *	JULIA CONST VALUE RECS
+ *
+ * 		- `-jr -0.5125 -ji 0.5213`
+ */
+int	main(int argc, char *argv[])
 {
 	t_context		c;
 
-	ctx_init(&c);
+	ctx_init(&c, argc, argv);
 	ctx_display(&c);
 	ctx_hook_event(&c, EVENT_KEY_PRESS, MASK_KEY_PRESS, handle_key_press);
 	mlx_mouse_hook(c.win, handle_button_press, &c);

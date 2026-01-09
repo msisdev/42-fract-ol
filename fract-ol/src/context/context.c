@@ -6,13 +6,13 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:36:29 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/08 19:10:21 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:03:55 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	ctx_init(t_context *c)
+void	ctx_init(t_context *c, int argc, char *argv[])
 {
 	c->mlx = mlx_init();
 	if (!c->mlx)
@@ -21,7 +21,7 @@ void	ctx_init(t_context *c)
 	if (!c->win)
 		exit(1);
 	dis_init(c->mlx, &c->d);
-	input_init(&c->i);
+	input_init(&c->i, argc, argv);
 	state_init(&c->s);
 }
 

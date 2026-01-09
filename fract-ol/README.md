@@ -2,6 +2,11 @@
 
 - [42 Docs / Libs / MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx.html)
 
+## Args
+```
+./fractol [-m (m|j)] [-j <float num> <float num>] [-c]
+```
+
 ## Math
 - `z = z^2 + c`
 

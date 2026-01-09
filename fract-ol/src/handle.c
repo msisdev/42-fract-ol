@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 19:34:24 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/08 19:13:20 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:02:44 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	handle_button_press(int code, int x, int y, t_context *c)
 		a.x = x;
 		a.y = y;
 		c->s.center = gl_pixel_to_point(a, c->s.center, c->s.scale);
-		printf("point: (%Lf, %Lf)\n", c->s.center.x, c->s.center.y);
 		state_refresh(&c->s);
 	}
 	else if (code == MOUSE_SCROLL_UP)

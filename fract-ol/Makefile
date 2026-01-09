@@ -8,7 +8,7 @@ RED				:= \033[0;31m
 RST				:= \033[0m
 END				:= \e[0m
 
-NAME			:= a.out
+NAME			:= fractol
 APP				:= $(NAME)
 APP_DIR			:= app
 APP_CODES		:= $(APP_DIR)/main.c
