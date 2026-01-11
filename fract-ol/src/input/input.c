@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 19:31:08 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 15:30:06 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:17:54 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	parse_opt(t_input *i, int *idx, char *argv[])
 	else if (ft_strncmp(ARG_OPT_JULIA_R_NAME, argv[*idx],
 			ft_strlen(ARG_OPT_JULIA_R_NAME)) == 0)
 	{
-		i->julia_c.x = input_parse_cmode(argv[*idx + 1]);
+		i->julia_c.x = input_parse_ld(argv[*idx + 1]);
 		*idx += 2;
 	}
 	else if (ft_strncmp(ARG_OPT_JULIA_I_NAME, argv[*idx],

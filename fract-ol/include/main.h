@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 20:25:17 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/11 17:17:05 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define ARG_OPT_FMODE_NAME "-f"
 # define ARG_OPT_CMODE_NAME "-c"
 # define ARG_OPT_CMODE_BW "bw"
+# define ARG_OPT_CMODE_SPACE "space"
 # define ARG_OPT_JULIA_R_NAME "-jr"
 # define ARG_OPT_JULIA_I_NAME "-ji"
 # define FRACT_MAX_ITER 100
@@ -86,7 +87,10 @@ typedef struct s_context
 
 /* color */
 t_color			color(t_fract f, t_color_mode m);
+t_color			color_interp(t_color a, t_color b, long double x);
+t_color			color_stepper(t_color u, t_color v, long double x);
 t_color			color_black_white(t_fract f);
+t_color			color_space(t_fract f);
 
 /* context */
 void			ctx_init(t_context *c, int argc, char *argv[]);
@@ -113,6 +117,7 @@ void			draw_fract_pixel(
 t_fract			fract_mandel(t_point c, unsigned int max_iter);
 t_fract			fract_julia(t_point z, t_point c, unsigned int max_iter);
 bool			fract_is_in_set(unsigned int last_iter, unsigned int max_iter);
+t_fract			fract(t_input *i, t_point p);
 
 /* graphic */
 t_point			gl_pixel_to_point(t_pixel a, t_point center, long double scale);

@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 15:19:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 15:32:36 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/11 17:15:03 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ t_fract_mode	input_parse_fmode(const char *s)
 t_color_mode	input_parse_cmode(const char *s)
 {
 	if (ft_strncmp(ARG_OPT_CMODE_BW, s,
-			ft_strlen(ARG_OPT_CMODE_BW) == 0))
+			ft_strlen(ARG_OPT_CMODE_BW)) == 0)
 		return (COLOR_MODE_BLACK_WHITE);
+	if (ft_strncmp(ARG_OPT_CMODE_SPACE, s,
+			ft_strlen(ARG_OPT_CMODE_SPACE)) == 0)
+		return (COLOR_MODE_TREE);
 	return (COLOR_MODE_BLACK_WHITE);
 }
 

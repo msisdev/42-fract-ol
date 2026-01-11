@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:27:54 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 17:28:46 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:07:22 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_fract
 	t_point			c;
 	unsigned int	i;
 	long double		q;
+	long double		s;
 }	t_fract;
 
 typedef enum e_fract_mode
@@ -65,6 +66,7 @@ typedef enum e_fract_mode
 typedef enum e_color_mode
 {
 	COLOR_MODE_BLACK_WHITE,
+	COLOR_MODE_TREE,
 }	t_color_mode;
 
 #endif // TYPES_H

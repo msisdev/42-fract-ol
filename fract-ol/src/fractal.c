@@ -6,30 +6,41 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:26:46 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 19:39:29 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:46:02 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
+static long double	get_smooth_value(unsigned int i, long double q)
+{
+	return (i + 1 - logl(logl(q) * 0.5) / logl(2));
+}
+
 t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
 {
-	t_fract	f;
-	t_point	t;
+	t_fract		f;
+	long double	x2;
+	long double	y2;
 
 	f.z = z;
 	f.c = c;
 	f.i = 0;
 	while (f.i < max_iter)
 	{
-		t.x = f.z.x * f.z.x;
-		t.y = f.z.y * f.z.y;
-		if (t.x + t.y > FRACT_ESCAPE_THRESHOLD_SQ)
+		x2 = f.z.x * f.z.x;
+		y2 = f.z.y * f.z.y;
+		if (x2 + y2 > FRACT_ESCAPE_THRESHOLD_SQ)
 			break ;
 		f.z.y = 2 * f.z.x * f.z.y + f.c.y;
-		f.z.x = t.x - t.y + f.c.x;
+		f.z.x = x2 - y2 + f.c.x;
 		f.i++;
 	}
+	f.q = x2 + y2;
+	if (f.i < max_iter)
+		f.s = get_smooth_value(f.i, f.q);
+	else
+		f.s = f.i;
 	return (f);
 }
 
@@ -51,6 +62,14 @@ t_fract	fract_mandel(t_point c, unsigned int max_iter)
 t_fract	fract_julia(t_point z, t_point c, unsigned int max_iter)
 {
 	return (fract_calc(z, c, max_iter));
+}
+
+t_fract	fract(t_input *i, t_point p)
+{
+	if (i->fmode == FRACT_MODE_MANDEL)
+		return (fract_mandel(p, FRACT_MAX_ITER));
+	else
+		return (fract_julia(p, i->julia_c, FRACT_MAX_ITER));
 }
 
 bool	fract_is_in_set(unsigned int last_iter, unsigned int max_iter)

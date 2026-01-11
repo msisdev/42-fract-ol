@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 17:24:47 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 20:25:46 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/11 16:29:55 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	draw_fract_pixel(t_display *d, t_input *i, t_state *s, t_pixel a)
 	t_color	c;
 
 	p = gl_pixel_to_point(a, s->center, s->scale);
-	if (i->fmode == FRACT_MODE_MANDEL)
-		f = fract_mandel(p, FRACT_MAX_ITER);
-	else
-		f = fract_julia(p, i->julia_c, FRACT_MAX_ITER);
+	f = fract(i, p);
 	c = color(f, i->cmode);
 	draw_pixel(d, a, c);
 }
