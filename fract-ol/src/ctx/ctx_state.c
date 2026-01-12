@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   context_state.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/02 18:33:24 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 16:41:24 by minseobk         ###   ########.fr       */
+/*   Created: 2026/01/04 19:39:10 by minseobk          #+#    #+#             */
+/*   Updated: 2026/01/12 14:44:52 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	dis_init(void *mlx_ptr, t_display *d)
+static long double	calc_init_scale(void)
 {
-	d->img = mlx_new_image(mlx_ptr, WINDOW_W, WINDOW_H);
-	if (!d->img)
-		exit(1);
-	d->addr = mlx_get_data_addr(d->img, &d->_bpp, &d->_ll, &d->_end);
-	if (!d->addr)
-		exit(1);
+	long double	px_len;
+
+	if (WINDOW_W > WINDOW_H)
+		px_len = WINDOW_H;
+	else
+		px_len = WINDOW_W;
+	return (STATE_INIT_WORLD_LEN / px_len);
+}
+
+void	ctx_state_init(t_state *s)
+{
+	s->center.x = 0;
+	s->center.y = 0;
+	s->scale = calc_init_scale();
+	s->px = 0;
+	s->px_max = WINDOW_W * WINDOW_H;
+}
+
+void	ctx_state_refresh(t_state *s)
+{
+	s->px = 0;
 }

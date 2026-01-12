@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:43:16 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/06 17:24:47 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:48:07 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,3 @@ void	draw_circle(t_display *d, t_pixel a, int r, t_color c)
 		i.x++;
 	}
 }
-

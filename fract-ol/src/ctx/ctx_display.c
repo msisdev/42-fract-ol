@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color_bw.c                                         :+:      :+:    :+:   */
+/*   context_display.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 20:27:31 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 20:27:40 by minseobk         ###   ########.fr       */
+/*   Created: 2026/01/02 18:33:24 by minseobk          #+#    #+#             */
+/*   Updated: 2026/01/12 14:44:59 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-t_color	color_black_white(t_fract f)
+void	ctx_dis_init(void *mlx_ptr, t_display *d)
 {
-	if (f.i % 2 == 0)
-		return (PALETTE_BLACK);
-	return (PALETTE_WHITE);
+	d->img = mlx_new_image(mlx_ptr, WINDOW_W, WINDOW_H);
+	if (!d->img)
+		exit(1);
+	d->addr = mlx_get_data_addr(d->img, &d->_bpp, &d->_ll, &d->_end);
+	if (!d->addr)
+		exit(1);
 }

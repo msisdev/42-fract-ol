@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/12 14:34:14 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:51:17 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_context
 t_color			color(t_fract f, t_color_mode m);
 t_color			color_interp(t_color a, t_color b, long double x);
 t_color			color_stepper(t_color u, t_color v, long double x);
-t_color			color_black_white(t_fract f);
+t_color			color_bw(t_fract f);
 t_color			color_space(t_fract f);
 
 /* context */
@@ -102,9 +102,9 @@ void			ctx_hook_event(
 					const t_context *c, t_event e, t_mask m, int (*f)());
 void			ctx_hook_loop(const t_context *c, int (*f)());
 void			ctx_loop(const t_context *c);
-
-/* display */
-void			dis_init(void *mlx_ptr, t_display *d);
+void			ctx_dis_init(void *mlx_ptr, t_display *d);
+void			ctx_state_init(t_state *s);
+void			ctx_state_refresh(t_state *s);
 
 /* draw */
 t_pixel			add_pixel(t_pixel a, t_pixel b);
@@ -116,8 +116,6 @@ void			draw_fract_pixel(
 					t_display *d, t_input *i, t_state *s, t_pixel a);
 
 /* fractal */
-t_fract			fract_mandel(t_point c, unsigned int max_iter);
-t_fract			fract_julia(t_point z, t_point c, unsigned int max_iter);
 bool			fract_is_in_set(unsigned int last_iter, unsigned int max_iter);
 t_fract			fract(t_input *i, t_point p);
 
@@ -136,9 +134,5 @@ void			input_invalid(void);
 t_fract_mode	input_parse_fmode(const char *s);
 t_color_mode	input_parse_cmode(const char *s);
 long double		input_parse_ld(const char *s);
-
-/* state */
-void			state_init(t_state *s);
-void			state_refresh(t_state *s);
 
 #endif // MAIN_H

@@ -2,12 +2,6 @@
 #- CONFIG -----------------------------#
 #--------------------------------------#
 
-BLU				:= \033[0;34m
-GRN				:= \033[0;32m
-RED				:= \033[0;31m
-RST				:= \033[0m
-END				:= \e[0m
-
 NAME			:= fractol
 APP				:= $(NAME)
 APP_DIR			:= app
@@ -27,23 +21,27 @@ CC				:= cc
 CFLAGS			:= -Wall -Wextra -Werror
 CFLAGS			+= -I$(INC_DIR) -I$(LIBFT_DIR)
 CFLAGS			+= $(DBG)	# make DBG="-g"
-# MLXFLAGS		:= -Lmlx -lmlx -L/usr/lib -Imlx -lX11 -lXext -lm
 MLXOBJFLAGS		:= -I/usr/include -I$(LIBMLX_DIR) -O3
 MLXLINKFLAGS	:= -L$(LIBMLX_DIR) -lmlx -L/usr/lib -I$(LIBMLX_DIR) -lXext -lX11 -lm -lz
 
 SRC_DIR			:= src
-SRC_CODES		:= $(shell find $(SRC_DIR) -name '*.c')
+SRC_CODES		:= \
+	$(SRC_DIR)/color/color_bw.c \
+	$(SRC_DIR)/color/color_space.c \
+	$(SRC_DIR)/color/color.c \
+	$(SRC_DIR)/ctx/ctx_display.c \
+	$(SRC_DIR)/ctx/ctx_get.c \
+	$(SRC_DIR)/ctx/ctx_hook.c \
+	$(SRC_DIR)/ctx/ctx_state.c \
+	$(SRC_DIR)/ctx/ctx.c \
+	$(SRC_DIR)/draw/draw_fract.c \
+	$(SRC_DIR)/draw/draw.c \
+	$(SRC_DIR)/input/input_parse.c \
+	$(SRC_DIR)/input/input.c \
+	$(SRC_DIR)/fractal.c \
+	$(SRC_DIR)/graphic.c \
+	$(SRC_DIR)/handle.c
 SRC_OBJS		:= $(SRC_CODES:.c=.o)
-
-TEST_DIR		:= test
-TEST_NAMES		:= $(shell find $(TEST_DIR) -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
-TEST_CODES		:= $(shell find $(TEST_DIR) -name '*.c')
-TEST_INC_DIR	:= test_include		# shared headers for test
-TEST_SRC_DIR	:= test_src			# shared srcs for test
-TEST_SRC_CODES	:= $(shell find $(TEST_SRC_DIR) -name '*.c')
-TEST_SRC_OBJS	:= $(TEST_SRC_CODES:.c=.o)
-# objs including all test srcs and shared srcs
-TEST_OBJS		:= $(TEST_CODES:.c=.o) $(TEST_SRC_OBJS)
 
 #--------------------------------------#
 #- CMD --------------------------------#
@@ -99,22 +97,6 @@ $(LIBMLX):
 src: $(SRC_OBJS)
 
 #--------------------------------------#
-#- TEST -------------------------------#
-#--------------------------------------#
-
-.PHONY: test
-test: $(BIN_DIR) $(TEST_NAMES)
-
-.SECONDEXPANSION:
-%_test: \
-	$(LIB_OBJS) \
-	$(SRC_OBJS) \
-	$(TEST_SRC_OBJS) \
-	$$(shell find $(TEST_DIR)/$$*_test -type f -name '*.c' | sed 's/\.c/\.o/') | \
-	$(BIN_DIR)	# order only prerequisite
-	$(CC) $(CFLAGS) $(MLXLINKFLAGS) -I $(TEST_INC_DIR) -o $(BIN_DIR)/$@ $^
-
-#--------------------------------------#
 #- COMMONS ----------------------------#
 #--------------------------------------#
 
@@ -123,7 +105,3 @@ $(BIN_DIR):
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(MLXOBJFLAGS) -c -o $@ $<
-
-# include test headers for test objs
-$(TEST_OBJS): %.o: %.c
-	$(CC) $(CFLAGS) $(MLXOBJFLAGS) -I $(TEST_INC_DIR) -c -o $@ $<

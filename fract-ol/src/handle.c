@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 19:34:24 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/11 16:48:11 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:46:09 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ int	handle_key_press(int code, t_context *c)
 	else if (code == KEY_LEFT)
 	{
 		c->s.center.x -= STATE_MOVE_STEP * c->s.scale;
-		state_refresh(&c->s);
+		ctx_state_refresh(&c->s);
 	}
 	else if (code == KEY_UP)
 	{
 		c->s.center.y -= STATE_MOVE_STEP * c->s.scale;
-		state_refresh(&c->s);
+		ctx_state_refresh(&c->s);
 	}
 	else if (code == KEY_RIGHT)
 	{
 		c->s.center.x += STATE_MOVE_STEP * c->s.scale;
-		state_refresh(&c->s);
+		ctx_state_refresh(&c->s);
 	}
 	else if (code == KEY_DOWN)
 	{
 		c->s.center.y += STATE_MOVE_STEP * c->s.scale;
-		state_refresh(&c->s);
+		ctx_state_refresh(&c->s);
 	}
 	return (0);
 }
@@ -78,17 +78,17 @@ int	handle_button_press(int code, int x, int y, t_context *c)
 		c->s.center = gl_pixel_to_point(a, c->s.center, c->s.scale);
 		f = fract(&c->i, c->s.center);
 		log_pixel(a, c->s.center, f, color(f, c->i.cmode));
-		state_refresh(&c->s);
+		ctx_state_refresh(&c->s);
 	}
 	else if (code == MOUSE_SCROLL_UP)
 	{
 		c->s.scale /= STATE_SCALE_STEP;
-		state_refresh(&c->s);
+		ctx_state_refresh(&c->s);
 	}
 	else if (code == MOUSE_SCROLL_DOWN)
 	{
 		c->s.scale *= STATE_SCALE_STEP;
-		state_refresh(&c->s);
+		ctx_state_refresh(&c->s);
 	}
 	return (0);
 }

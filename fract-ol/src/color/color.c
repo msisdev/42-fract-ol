@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 19:37:11 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/11 17:16:39 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:51:17 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_color	color_stepper(t_color u, t_color v, long double x)
 t_color	color(t_fract f, t_color_mode m)
 {
 	if (m == COLOR_MODE_BLACK_WHITE)
-		return (color_black_white(f));
+		return (color_bw(f));
 	if (m == COLOR_MODE_TREE)
 		return (color_space(f));
-	return (color_black_white(f));
+	return (color_bw(f));
 }

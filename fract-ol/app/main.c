@@ -6,21 +6,12 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 19:05:19 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 15:35:20 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:54:21 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-/**
- *	USAGE
- *
- *		./fractol [-m (m|j)] [-jr <float num>] [-ji <float num>] [-c]
- *
- *	JULIA CONST VALUE RECS
- *
- * 		- `-jr -0.5125 -ji 0.5213`
- */
 int	main(int argc, char *argv[])
 {
 	t_context		c;
