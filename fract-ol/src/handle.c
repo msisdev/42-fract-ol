@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 19:34:24 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/12 14:46:09 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:20:42 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,28 +56,28 @@ int	handle_key_press(int code, t_context *c)
 	return (0);
 }
 
-static void	log_pixel(t_pixel a, t_point p, t_fract f, t_color c)
-{
-	printf("[info] pixel(%d, %d) point(%Lf, %Lf) i(%u) s(%Lf) color(%x)\n",
-		a.x, a.y,
-		p.x, p.y,
-		f.i,
-		f.s,
-		c);
-}
+//static void	log_pixel(t_pixel a, t_point p, t_fract f, t_color c)
+//{
+//	printf("[info] pixel(%d, %d) point(%Lf, %Lf) i(%u) s(%Lf) color(%x)\n",
+//		a.x, a.y,
+//		p.x, p.y,
+//		f.i,
+//		f.s,
+//		c);
+//}
+//
+//	f = fract(&c->i, c->s.center);
+//	log_pixel(a, c->s.center, f, color(f, c->i.cmode));
 
 int	handle_button_press(int code, int x, int y, t_context *c)
 {
 	t_pixel	a;
-	t_fract	f;
 
 	if (code == MOUSE_LEFT_CLICK)
 	{
 		a.x = x;
 		a.y = y;
 		c->s.center = gl_pixel_to_point(a, c->s.center, c->s.scale);
-		f = fract(&c->i, c->s.center);
-		log_pixel(a, c->s.center, f, color(f, c->i.cmode));
 		ctx_state_refresh(&c->s);
 	}
 	else if (code == MOUSE_SCROLL_UP)
