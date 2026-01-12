@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:26:46 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/12 14:49:51 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 18:41:26 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static long double	get_smooth_value(unsigned int i, long double q)
 {
-	return (i + 1 - logl(logl(q) * 0.5) / logl(2));
+	return (i + 1 - (logl(q)));
 }
 
 t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
