@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 15:27:54 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/11 16:07:22 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:27:36 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_fract
 
 typedef enum e_fract_mode
 {
+	FRACT_MODE_EMPTY,
 	FRACT_MODE_MANDEL,
 	FRACT_MODE_JULIA,
 }	t_fract_mode;

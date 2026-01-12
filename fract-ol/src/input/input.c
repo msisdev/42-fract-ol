@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 19:31:08 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/11 16:17:54 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:34:24 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  */
 static void	input_fill_const(t_input *i)
 {
-	i->fmode = FRACT_MODE_MANDEL;
+	i->fmode = FRACT_MODE_EMPTY;
 	i->cmode = COLOR_MODE_BLACK_WHITE;
 	i->julia_c.x = -0.5125;
 	i->julia_c.y = 0.5213;
@@ -53,6 +53,12 @@ static void	parse_opt(t_input *i, int *idx, char *argv[])
 	}
 }
 
+void	input_invalid(void)
+{
+	ft_putendl_fd(MSG_USAGE, STDOUT_FILENO);
+	exit(0);
+}
+
 void	input_init(t_input *i, int argc, char *argv[])
 {
 	int	idx;
@@ -66,4 +72,6 @@ void	input_init(t_input *i, int argc, char *argv[])
 		else
 			idx++;
 	}
+	if (i->fmode == FRACT_MODE_EMPTY)
+		input_invalid();
 }

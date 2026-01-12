@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/11 17:17:05 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:34:14 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define ARG_OPT_JULIA_I_NAME "-ji"
 # define FRACT_MAX_ITER 100
 # define FRACT_ESCAPE_THRESHOLD_SQ 4.0
+# define MSG_USAGE "Usage: \
+fractol -f <m | j> [-c <bw | space>] [-jr <float>] [-ji <float>]"
 # define STATE_INIT_WORLD_LEN 4.0
 # define STATE_PX_STEP_SIZE 1000000
 # define STATE_SCALE_STEP 1.1
@@ -130,6 +132,7 @@ int				handle_button_press(int code, int x, int y, t_context *c);
 
 /* input */
 void			input_init(t_input *i, int argc, char *argv[]);
+void			input_invalid(void);
 t_fract_mode	input_parse_fmode(const char *s);
 t_color_mode	input_parse_cmode(const char *s);
 long double		input_parse_ld(const char *s);

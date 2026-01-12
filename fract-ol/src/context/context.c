@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 18:36:29 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/09 15:03:55 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:24:46 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ctx_init(t_context *c, int argc, char *argv[])
 {
+	input_init(&c->i, argc, argv);
 	c->mlx = mlx_init();
 	if (!c->mlx)
 		exit(1);
@@ -21,7 +22,6 @@ void	ctx_init(t_context *c, int argc, char *argv[])
 	if (!c->win)
 		exit(1);
 	dis_init(c->mlx, &c->d);
-	input_init(&c->i, argc, argv);
 	state_init(&c->s);
 }
 

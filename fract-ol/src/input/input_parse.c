@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 15:19:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/11 17:15:03 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 14:40:01 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_fract_mode	input_parse_fmode(const char *s)
 		return (FRACT_MODE_MANDEL);
 	if (*s == 'j')
 		return (FRACT_MODE_JULIA);
+	input_invalid();
 	return (FRACT_MODE_MANDEL);
 }
 
@@ -29,7 +30,35 @@ t_color_mode	input_parse_cmode(const char *s)
 	if (ft_strncmp(ARG_OPT_CMODE_SPACE, s,
 			ft_strlen(ARG_OPT_CMODE_SPACE)) == 0)
 		return (COLOR_MODE_TREE);
+	input_invalid();
 	return (COLOR_MODE_BLACK_WHITE);
+}
+
+static void	validate_ld(const char *s)
+{
+	char	*p;
+
+	if (!s || !*s)
+		return ;
+	if (*s == '-' || *s == '+')
+		s++;
+	p = ft_strchr(s, '.');
+	if (p)
+	{
+		while (s != p)
+		{
+			if (!ft_isdigit(*s))
+				input_invalid();
+			s++;
+		}
+		s++;
+	}
+	while (*s)
+	{
+		if (!ft_isdigit(*s))
+			input_invalid();
+		s++;
+	}
 }
 
 static long double	parse_fraction(const char *s)
@@ -52,6 +81,7 @@ long double	input_parse_ld(const char *s)
 	long double	n;
 	char		*p;
 
+	validate_ld(s);
 	if (*s == '-')
 		sign = -1;
 	else
