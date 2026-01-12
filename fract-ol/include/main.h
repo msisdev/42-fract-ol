@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:03:12 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/12 14:51:17 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/01/12 15:38:19 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,14 @@
 # define ARG_OPT_JULIA_I_NAME "-ji"
 # define FRACT_MAX_ITER 100
 # define FRACT_ESCAPE_THRESHOLD_SQ 4.0
-# define MSG_USAGE "Usage: \
-fractol -f <m | j> [-c <bw | space>] [-jr <float>] [-ji <float>]"
+# define MSG_USAGE "Usage: fractol -f {m | j} [OPTIONS]\n\
+\n\
+Options:\n\
+	-f	Select fractal mode: {m | j}\n\
+	-c	Select color mode {bw | space}\n\
+	-jr	Input julia const float value for real part.\n\
+	-ji	Input julia const float value for imaginary part.\n\
+"
 # define STATE_INIT_WORLD_LEN 4.0
 # define STATE_PX_STEP_SIZE 1000000
 # define STATE_SCALE_STEP 1.1
