@@ -6,7 +6,7 @@
 /*   By: minseobk <minseobk@student.42gyeongsan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:26:46 by minseobk          #+#    #+#             */
-/*   Updated: 2026/01/12 18:48:36 by minseobk         ###   ########.fr       */
+/*   Updated: 2026/04/04 18:47:26 by minseobk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_fract	fract_calc(t_point z, t_point c, unsigned int max_iter)
 	f.z = z;
 	f.c = c;
 	f.i = 0;
+	x2 = 0;
+	y2 = 0;
 	while (f.i < max_iter)
 	{
 		x2 = f.z.x * f.z.x;

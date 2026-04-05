@@ -73,7 +73,7 @@ re: fclean all
 app: $(NAME)
 
 $(NAME): $(SRC_OBJS) $(APP_OBJS) $(LIBFT) $(LIBMLX)
-	$(CC) $(CFLAGS) $(MLXLINKFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(MLXLINKFLAGS)
 
 #--------------------------------------#
 #- LIBFT ------------------------------#
