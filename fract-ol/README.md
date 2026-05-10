@@ -4,7 +4,8 @@
 
 ## Args
 ```
-./fractol [-m (m|j)] [-j <float num> <float num>] [-c]
+./fractol [-m] [-j <float num> <float num>] [-c]
+./fractol -m -c space
 ```
 
 ## Math
